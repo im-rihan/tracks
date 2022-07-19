@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react"
+import { createContext, useReducer } from "react";
 
 export default (reducer, actions, defaultValue) => {
 	const Context = createContext();
@@ -15,7 +15,7 @@ export default (reducer, actions, defaultValue) => {
 			<Context.Provider value={{ state, ...boundActions }}>
 				{children}
 			</Context.Provider>
-		)
+		);
 	};
-	return { Context, Provider }
+	return { Context, Provider };
 };
