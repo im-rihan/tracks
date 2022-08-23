@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Platform, StatusBar } from 'react-native';
 import { Context as AuthContext } from '../context/AuthContext';
 import AuthForm from '../components/AuthForm';
 import NavLink from '../components/NavLink';
-import { NavigationEvents } from 'react-navigation';
+import { NavigationEvents, SafeAreaView } from 'react-navigation';
 
 const SignupScreen = () => {
 	const { state, signUp, clearErrorMessage } = useContext(AuthContext);
 
 	return (
-		<View style={styles.container}>
+		<SafeAreaView style={styles.safeAreaView}>
 			<NavigationEvents onWillFocus={clearErrorMessage} />
 
 			<AuthForm
@@ -23,7 +23,7 @@ const SignupScreen = () => {
 				routeName="Signin"
 				text="Already have an account? Sign in instead!"
 			/>
-		</View>
+		</SafeAreaView>
 	);
 };
 
@@ -34,10 +34,10 @@ SignupScreen.navigationOptions = () => {
 };
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
+	safeAreaView: {
+		flex: 1, backgroundColor: "white",
+		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
 		justifyContent: 'center',
-		marginBottom: 250,
 	}
 });
 

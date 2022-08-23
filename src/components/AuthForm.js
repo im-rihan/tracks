@@ -52,7 +52,8 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
 
 const styles = StyleSheet.create({
 	header: {
-		alignSelf: 'center'
+		alignSelf: 'center',
+		marginBottom:25
 	},
 	errorMessage: {
 		fontSize: 16,
